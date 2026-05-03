@@ -1,11 +1,18 @@
+import React from 'react';
+
 function ProjectCard({ project, onBuy }) {
+  // Construct the correct image URL for the production environment
+  const imagePath = `/images/projects/${project.image_url}`; // Assuming project.image_url contains image file name (e.g., 'ecommerce-app.jpg')
+
   return (
     <div className="project-card">
       <div className="project-image-wrap">
+        {/* Add loading="lazy" to improve performance */}
         <img
-          src={project.image_url}
+          src={imagePath}
           alt={project.title}
           className="project-image"
+          loading="lazy"
         />
       </div>
 

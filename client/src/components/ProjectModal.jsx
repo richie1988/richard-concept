@@ -1,5 +1,5 @@
-import { useState } from "react";
-import ContactModal from "./ContactModal";
+import React, { useState } from 'react';
+import ContactModal from './ContactModal';
 
 function ProjectModal({ project, onClose }) {
   const [openContact, setOpenContact] = useState(false);
@@ -7,13 +7,22 @@ function ProjectModal({ project, onClose }) {
   const whatsappMessage = `Hello Richard, I am interested in the project: ${project.title}`;
   const whatsappLink = `https://wa.me/${project.whatsapp_number}?text=${encodeURIComponent(whatsappMessage)}`;
 
+  // Construct the correct image URL for the modal
+  const imagePath = `/images/projects/${project.image_url}`;
+
   return (
     <>
       <div className="modal-overlay" onClick={onClose}>
         <div className="project-modal" onClick={(e) => e.stopPropagation()}>
           <button className="close-btn" onClick={onClose}>×</button>
 
-          <img src={project.image_url} alt={project.title} className="modal-image" />
+          {/* Add lazy loading for the modal image */}
+          <img
+            src={imagePath}
+            alt={project.title}
+            className="modal-image"
+            loading="lazy"
+          />
 
           <span className="project-category">{project.category}</span>
           <h2>{project.title}</h2>
