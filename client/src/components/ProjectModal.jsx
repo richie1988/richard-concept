@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import ContactModal from './ContactModal';
+import React, { useState } from "react";
+import ContactModal from "./ContactModal";
 
 function ProjectModal({ project, onClose }) {
   const [openContact, setOpenContact] = useState(false);
 
   const whatsappMessage = `Hello Richard, I am interested in the project: ${project.title}`;
-  const whatsappLink = `https://wa.me/${project.whatsapp_number}?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappLink = `https://wa.me/${project.whatsapp_number}?text=${encodeURIComponent(
+    whatsappMessage
+  )}`;
 
-  // Construct the correct image URL for the modal
-  const imagePath = `/images/projects/${project.image_url}`;
+  const baseURL = import.meta.env.VITE_API_URL?.replace("/api", "");
+
+  // SAME RULE: DO NOT prepend /images/projects again
+  const imagePath = `${baseURL}${project.image_url}`;
 
   return (
     <>
@@ -16,7 +20,6 @@ function ProjectModal({ project, onClose }) {
         <div className="project-modal" onClick={(e) => e.stopPropagation()}>
           <button className="close-btn" onClick={onClose}>×</button>
 
-          {/* Add lazy loading for the modal image */}
           <img
             src={imagePath}
             alt={project.title}
@@ -24,7 +27,7 @@ function ProjectModal({ project, onClose }) {
             loading="lazy"
           />
 
-          <span className="project-category">{project.category}</span>
+          <span>{project.category}</span>
           <h2>{project.title}</h2>
           <p>{project.full_description}</p>
           <h3>${project.price}</h3>
@@ -46,10 +49,7 @@ function ProjectModal({ project, onClose }) {
               Chat on WhatsApp
             </a>
 
-            <button
-              className="contact-btn"
-              onClick={() => setOpenContact(true)}
-            >
+            <button className="contact-btn" onClick={() => setOpenContact(true)}>
               Email Me
             </button>
           </div>
