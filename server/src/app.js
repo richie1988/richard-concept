@@ -12,5 +12,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/projects", projectRoutes);
+app.use("/images", express.static("public/images"));
 
 export default app;
