@@ -3,7 +3,7 @@ import React from "react";
 function ProjectCard({ project, onBuy }) {
   const baseURL = import.meta.env.VITE_API_URL?.replace("/api", "");
 
-  // DB already includes /images/projects/...
+  // No need to prepend /images/projects again
   const imagePath = `${baseURL}${project.image_url}`;
 
   return (

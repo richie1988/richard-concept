@@ -11,7 +11,7 @@ function ProjectModal({ project, onClose }) {
 
   const baseURL = import.meta.env.VITE_API_URL?.replace("/api", "");
 
-  // SAME RULE: DO NOT prepend /images/projects again
+  // NO NEED to prepend /images/projects again, image URL is already correct in DB
   const imagePath = `${baseURL}${project.image_url}`;
 
   return (
