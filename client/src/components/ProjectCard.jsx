@@ -1,11 +1,13 @@
 import React from "react";
 
 function ProjectCard({ project, onBuy }) {
-  // Base URL for backend (Render)
+  // Backend base URL (Render)
   const baseURL = import.meta.env.VITE_API_URL?.replace("/api", "");
 
-  // If DB already has "/images/...", just prefix backend URL
-  const imagePath = `${baseURL}${project.image_url}`;
+  // Ensure no double slashes or duplicated paths
+  const imagePath = project.image_url.startsWith("http")
+    ? project.image_url
+    : `${baseURL}${project.image_url.startsWith("/") ? "" : "/"}${project.image_url}`;
 
   return (
     <div className="project-card">
@@ -16,7 +18,7 @@ function ProjectCard({ project, onBuy }) {
           className="project-image"
           loading="lazy"
           onError={(e) => {
-            e.target.src = "/fallback-image.jpg"; // optional fallback
+            e.target.src = "/fallback-image.jpg";
           }}
         />
       </div>
