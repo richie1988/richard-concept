@@ -1,17 +1,16 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
-import { fileURLToPath } from "url";
 
 import projectRoutes from "./routes/projectRoutes.js";
 
 const app = express();
 
-// Enable CORS
+// middleware
 app.use(cors());
 app.use(express.json());
 
-// Root route
+// root test
 app.get("/", (req, res) => {
   res.send("Richard Portfolio API is running");
 });
@@ -20,17 +19,12 @@ app.get("/", (req, res) => {
 app.use("/api/projects", projectRoutes);
 
 // ===============================
-// FIX: Proper static image serving for Render
+// FIXED STATIC FILE SERVING (Render-safe)
 // ===============================
 
-// Required to resolve __dirname in ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// IMPORTANT: use process.cwd() (works on Render + local)
+const imagesPath = path.join(process.cwd(), "public/images");
 
-// Serve images correctly in production
-app.use(
-  "/images",
-  express.static(path.join(__dirname, "../public/images"))
-);
+app.use("/images", express.static(imagesPath));
 
 export default app;
