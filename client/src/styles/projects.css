@@ -1,9 +1,15 @@
+/* =========================
+   SECTIONS
+========================= */
 .projects-section,
 .clients-section,
 .cta-section {
   padding: 90px 0;
 }
 
+/* =========================
+   TITLES
+========================= */
 .center-title {
   text-align: center;
   font-size: 2.4rem;
@@ -22,77 +28,134 @@
   margin-bottom: 36px;
 }
 
+/* =========================
+   GRID
+========================= */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
+/* =========================
+   CARD
+========================= */
 .project-card {
   background: #fff;
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
-  transition: 0.3s ease;
   border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
 }
 
+/* =========================
+   IMAGE AREA (EQUAL SIZE FIX)
+========================= */
 .project-image-wrap {
-  background: #f8fbff;
-  padding: 12px;
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: #f1f5f9;
+  overflow: hidden;
 }
 
+/* IMAGE */
 .project-image {
   width: 100%;
-  height: 230px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 14px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
+/* when loaded */
+.project-image.loaded {
+  opacity: 1;
+}
+
+/* SKELETON LOADING */
+.image-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 25%,
+    #f8fafc 50%,
+    #e2e8f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* =========================
+   CONTENT
+========================= */
 .project-content {
   padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .project-category {
-  display: inline-block;
-  color: #3b82f6;
   font-size: 0.75rem;
   font-weight: 700;
-  margin-bottom: 10px;
+  color: #3b82f6;
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .project-content h3 {
-  margin-bottom: 10px;
   color: #0f172a;
+  margin-bottom: 10px;
 }
 
 .project-content p {
   color: #64748b;
   line-height: 1.6;
   margin-bottom: 14px;
-  min-height: 74px;
+  min-height: 70px; /* keeps cards equal */
 }
 
 .project-content h4 {
   color: #2563eb;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-bottom: 14px;
 }
 
+/* =========================
+   BUTTONS
+========================= */
 .buy-btn,
 .whatsapp-btn,
 .contact-btn {
-  background: #2563eb;
-  color: #fff;
   padding: 12px 16px;
   border-radius: 10px;
-  display: inline-block;
   font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.buy-btn {
+  background: #2563eb;
+  margin-top: auto;
 }
 
 .whatsapp-btn {
@@ -100,10 +163,12 @@
 }
 
 .contact-btn {
-  border: none;
   background: #2563eb;
 }
 
+/* =========================
+   MODAL
+========================= */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -117,13 +182,13 @@
 
 .project-modal {
   background: #fff;
-  max-width: 760px;
   width: 100%;
+  max-width: 760px;
   border-radius: 20px;
   padding: 24px;
-  position: relative;
   max-height: 92vh;
   overflow-y: auto;
+  position: relative;
 }
 
 .close-btn {
@@ -132,6 +197,8 @@
   top: 10px;
   font-size: 28px;
   background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .modal-image {
@@ -140,10 +207,6 @@
   object-fit: cover;
   border-radius: 14px;
   margin-bottom: 20px;
-}
-
-.modal-info {
-  margin-top: 16px;
 }
 
 .modal-info p {
@@ -158,15 +221,9 @@
   margin-top: 20px;
 }
 
-.clients-box {
-  border: 1px dashed #cbd5e1;
-  border-radius: 18px;
-  padding: 60px 20px;
-  text-align: center;
-  color: #94a3b8;
-  background: #f8fbff;
-}
-
+/* =========================
+   CTA
+========================= */
 .cta-box {
   background: linear-gradient(to right, #eff6ff, #dbeafe);
   border-radius: 24px;
@@ -187,6 +244,21 @@
   color: #475569;
 }
 
+/* =========================
+   CLIENT BOX
+========================= */
+.clients-box {
+  border: 1px dashed #cbd5e1;
+  border-radius: 18px;
+  padding: 60px 20px;
+  text-align: center;
+  color: #94a3b8;
+  background: #f8fbff;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 1100px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
