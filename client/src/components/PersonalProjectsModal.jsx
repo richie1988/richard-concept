@@ -40,35 +40,36 @@ const personalProjects = [
   },
   {
     title: "SpaceX Airspace Deployment Booking",
-    image: "/images/personalprojects/project6.png",
+    image: "/images/personalprojects/project13.png",
     tech: "React, Express, PostgreSQL",
     description: "A booking platform for airspace deployment scheduling and cancellations.",
     link: "https://www.linkedin.com/in/richard-sikaonga/details/featured/"
   },
-  {
-    title: "Corporate Loan Company Website",
-    image: "/images/personalprojects/project7.png",
-    tech: "React, CSS, EmailJS",
-    description: "A corporate website for a loan company with service and contact sections.",
+ {
+    title: "Attorney & Law Firm Website",
+    image: "/images/personalprojects/project10.png",
+    tech: "React, CSS, Animation",
+    category: "Legal Services",
+    description: "A professional law firm website showcasing legal services, attorney profiles, and client consultation booking.",
     link: "https://www.linkedin.com/in/richard-sikaonga/details/featured/"
   },
   {
     title: "Video Editor & Digital Company Website",
-    image: "/images/personalprojects/project8.png",
+    image: "/images/personalprojects/project7.png",
     tech: "React, CSS, Animation",
     description: "A digital media portfolio website for video editing and creative services.",
     link: "https://www.linkedin.com/in/richard-sikaonga/details/featured/"
   },
   {
     title: "Hotel & Lodge Website",
-    image: "/images/personalprojects/project9.png",
+    image: "/images/personalprojects/project16.png",
     tech: "React, JavaScript, CSS",
     description: "A hospitality website for rooms, bookings, gallery and lodge services.",
     link: "https://www.linkedin.com/in/richard-sikaonga/details/featured/"
   },
   {
     title: "Logistics Company Website",
-    image: "/images/personalprojects/project10.png",
+    image: "/images/personalprojects/project15.png",
     tech: "React, CSS, API",
     description: "A logistics business website for transport, freight and delivery services.",
     link: "https://www.linkedin.com/in/richard-sikaonga/details/featured/"
