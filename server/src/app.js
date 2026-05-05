@@ -18,10 +18,6 @@ app.get("/", (req, res) => {
 // API routes
 app.use("/api/projects", projectRoutes);
 
-// ===============================
-// FIXED STATIC FILE SERVING (Render-safe)
-// ===============================
-
 // IMPORTANT: use process.cwd() (works on Render + local)
 const imagesPath = path.join(process.cwd(), "public/images");
 
