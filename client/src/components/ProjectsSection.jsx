@@ -1,9 +1,7 @@
 import { useState } from "react";
 import projectsData from "../data/projects";
-
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
-
 import "../styles/projects.css";
 import { motion } from "framer-motion";
 
@@ -13,6 +11,7 @@ function ProjectsSection() {
   return (
     <section className="projects-section" id="projects">
       <div className="container">
+
         <motion.p
           className="section-mini-title"
           initial={{ opacity: 0, y: 25 }}
@@ -38,20 +37,16 @@ function ProjectsSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true, amount: 0.2 }}
         >
-          Explore my ready-to-use solutions. You can buy and deploy them for your business.
+          Explore my ready-to-use solutions. You can buy and deploy them.
         </motion.p>
 
-        {/* GRID (ALWAYS RENDERED) */}
         <div className="projects-grid">
           {projectsData.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.05
-              }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
               viewport={{ once: true, amount: 0.2 }}
             >
               <ProjectCard
@@ -61,9 +56,9 @@ function ProjectsSection() {
             </motion.div>
           ))}
         </div>
+
       </div>
 
-      {/* MODAL */}
       {selectedProject && (
         <ProjectModal
           project={selectedProject}

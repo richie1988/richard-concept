@@ -10,44 +10,37 @@ function ProjectModal({ project, onClose }) {
     project.whatsapp_number
   }?text=${encodeURIComponent(whatsappMessage)}`;
 
+  const imagePath =
+    project.image ||
+    project.image_url ||
+    `/images/projects/${project.title
+      .toLowerCase()
+      .replace(/\s/g, "-")}.jpg`;
+
   return (
     <>
-      <div
-        className="modal-overlay"
-        onClick={onClose}
-      >
-        <div
-          className="project-modal"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <button
-            className="close-btn"
-            onClick={onClose}
-          >
+      <div className="modal-overlay" onClick={onClose}>
+        <div className="project-modal" onClick={(e) => e.stopPropagation()}>
+          <button className="close-btn" onClick={onClose}>
             ×
           </button>
 
           <img
-            src={project.image_url}
+            src={imagePath}
             alt={project.title}
             className="modal-image"
             loading="lazy"
           />
 
-          <span className="project-category">
-            {project.category}
-          </span>
+          <span className="project-category">{project.category}</span>
 
           <h2>{project.title}</h2>
 
           <p>{project.full_description}</p>
 
-          <h3>
-            ${project.price.toLocaleString()}
-          </h3>
+          <h3>${project.price}</h3>
 
           <div className="modal-info">
-
             <p>
               <strong>Technologies:</strong>{" "}
               {Array.isArray(project.technologies)
@@ -63,19 +56,15 @@ function ProjectModal({ project, onClose }) {
             </p>
 
             <p>
-              <strong>Delivery Time:</strong>{" "}
-              {project.delivery_time}
+              <strong>Delivery Time:</strong> {project.delivery_time}
             </p>
 
             <p>
-              <strong>Support:</strong>{" "}
-              {project.support_info}
+              <strong>Support:</strong> {project.support_info}
             </p>
-
           </div>
 
           <div className="modal-actions">
-
             <a
               href={whatsappLink}
               target="_blank"
@@ -91,15 +80,12 @@ function ProjectModal({ project, onClose }) {
             >
               Email Me
             </button>
-
           </div>
         </div>
       </div>
 
       {openContact && (
-        <ContactModal
-          onClose={() => setOpenContact(false)}
-        />
+        <ContactModal onClose={() => setOpenContact(false)} />
       )}
     </>
   );

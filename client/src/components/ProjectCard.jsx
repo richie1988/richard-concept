@@ -3,17 +3,22 @@ import { useState } from "react";
 function ProjectCard({ project, onBuy }) {
   const [loaded, setLoaded] = useState(false);
 
-  const imagePath = project.image; // NOW LOCAL DATA (NO API)
+  // FIX: support ALL possible formats safely
+  const imagePath =
+    project.image ||
+    project.image_url ||
+    `/images/projects/${project.slug || project.title
+      .toLowerCase()
+      .replace(/\s/g, "-")}.jpg`;
 
   return (
     <div className="project-card">
       <div className="project-image-wrap">
 
         {!loaded && (
-          <>
-            <div className="image-skeleton" />
-            <div className="image-spinner" />
-          </>
+          <div className="image-spinner">
+            <div className="spinner" />
+          </div>
         )}
 
         <img
@@ -23,6 +28,7 @@ function ProjectCard({ project, onBuy }) {
           loading="lazy"
           decoding="async"
           onLoad={() => setLoaded(true)}
+          onError={() => setLoaded(true)} // IMPORTANT: prevents infinite spinner
         />
       </div>
 
