@@ -3,13 +3,10 @@ import React, { useState } from "react";
 function ProjectCard({ project, onBuy }) {
   const [loaded, setLoaded] = useState(false);
 
-  const baseURL = import.meta.env.VITE_API_URL?.replace("/api", "");
-  const imagePath = `${baseURL}${project.image_url}`;
-
   return (
     <div className="project-card">
       <div className="project-image-wrap">
-
+        
         {!loaded && (
           <>
             <div className="image-skeleton" />
@@ -18,7 +15,7 @@ function ProjectCard({ project, onBuy }) {
         )}
 
         <img
-          src={imagePath}
+          src={project.image_url}
           alt={project.title}
           className={`project-image ${loaded ? "loaded" : ""}`}
           loading="lazy"
@@ -28,12 +25,22 @@ function ProjectCard({ project, onBuy }) {
       </div>
 
       <div className="project-content">
-        <span className="project-category">{project.category}</span>
-        <h3>{project.title}</h3>
-        <p>{project.short_description}</p>
-        <h4>${project.price}</h4>
+        <span className="project-category">
+          {project.category}
+        </span>
 
-        <button className="buy-btn" onClick={onBuy}>
+        <h3>{project.title}</h3>
+
+        <p>{project.short_description}</p>
+
+        <h4>
+          ${project.price.toLocaleString()}
+        </h4>
+
+        <button
+          className="buy-btn"
+          onClick={onBuy}
+        >
           Buy
         </button>
       </div>

@@ -5,41 +5,77 @@ function ProjectModal({ project, onClose }) {
   const [openContact, setOpenContact] = useState(false);
 
   const whatsappMessage = `Hello Richard, I am interested in the project: ${project.title}`;
-  const whatsappLink = `https://wa.me/${project.whatsapp_number}?text=${encodeURIComponent(
-    whatsappMessage
-  )}`;
 
-  const baseURL = import.meta.env.VITE_API_URL?.replace("/api", "");
-
-  // NO NEED to prepend /images/projects again, image URL is already correct in DB
-  const imagePath = `${baseURL}${project.image_url}`;
+  const whatsappLink = `https://wa.me/${
+    project.whatsapp_number
+  }?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <>
-      <div className="modal-overlay" onClick={onClose}>
-        <div className="project-modal" onClick={(e) => e.stopPropagation()}>
-          <button className="close-btn" onClick={onClose}>×</button>
+      <div
+        className="modal-overlay"
+        onClick={onClose}
+      >
+        <div
+          className="project-modal"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            className="close-btn"
+            onClick={onClose}
+          >
+            ×
+          </button>
 
           <img
-            src={imagePath}
+            src={project.image_url}
             alt={project.title}
             className="modal-image"
             loading="lazy"
           />
 
-          <span>{project.category}</span>
+          <span className="project-category">
+            {project.category}
+          </span>
+
           <h2>{project.title}</h2>
+
           <p>{project.full_description}</p>
-          <h3>${project.price}</h3>
+
+          <h3>
+            ${project.price.toLocaleString()}
+          </h3>
 
           <div className="modal-info">
-            <p><strong>Technologies:</strong> {project.technologies}</p>
-            <p><strong>Features:</strong> {project.features}</p>
-            <p><strong>Delivery Time:</strong> {project.delivery_time}</p>
-            <p><strong>Support:</strong> {project.support_info}</p>
+
+            <p>
+              <strong>Technologies:</strong>{" "}
+              {Array.isArray(project.technologies)
+                ? project.technologies.join(", ")
+                : project.technologies}
+            </p>
+
+            <p>
+              <strong>Features:</strong>{" "}
+              {Array.isArray(project.features)
+                ? project.features.join(", ")
+                : project.features}
+            </p>
+
+            <p>
+              <strong>Delivery Time:</strong>{" "}
+              {project.delivery_time}
+            </p>
+
+            <p>
+              <strong>Support:</strong>{" "}
+              {project.support_info}
+            </p>
+
           </div>
 
           <div className="modal-actions">
+
             <a
               href={whatsappLink}
               target="_blank"
@@ -49,14 +85,22 @@ function ProjectModal({ project, onClose }) {
               Chat on WhatsApp
             </a>
 
-            <button className="contact-btn" onClick={() => setOpenContact(true)}>
+            <button
+              className="contact-btn"
+              onClick={() => setOpenContact(true)}
+            >
               Email Me
             </button>
+
           </div>
         </div>
       </div>
 
-      {openContact && <ContactModal onClose={() => setOpenContact(false)} />}
+      {openContact && (
+        <ContactModal
+          onClose={() => setOpenContact(false)}
+        />
+      )}
     </>
   );
 }
