@@ -52,7 +52,11 @@ function Solutions() {
           className="services-left"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <p className="section-mini-title">WHAT I DO</p>
 
@@ -76,8 +80,11 @@ function Solutions() {
               className="service-mini-card"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.25, 0.1, 0.25, 1]
+              }}
+              viewport={{ once: true, amount: 0.2 }}
             >
               <div className="service-mini-icon">{item.icon}</div>
 

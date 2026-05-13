@@ -18,7 +18,11 @@ function About() {
           className="about-left"
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           <p className="section-mini-title">ABOUT ME</p>
           <h2>
@@ -46,7 +50,11 @@ function About() {
           className="about-stats-grid"
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           {stats.map((item, index) => (
             <div className="stat-card" key={index}>

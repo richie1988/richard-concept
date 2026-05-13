@@ -44,7 +44,11 @@ function Process() {
           className="section-mini-title"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           MY PROCESS
         </motion.p>
@@ -53,7 +57,11 @@ function Process() {
           className="process-title"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
+          viewport={{ once: true, amount: 0.2 }}
         >
           How I Work
         </motion.h2>
@@ -65,8 +73,11 @@ function Process() {
                 className="process-card"
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08 }}
+                transition={{
+                  duration: 0.6,
+                  ease: [0.25, 0.1, 0.25, 1]
+                }}
+                viewport={{ once: true, amount: 0.2 }}
               >
                 <div className="process-icon">{step.icon}</div>
                 <span className="process-number">{step.number}</span>
