@@ -9,8 +9,13 @@ function ProjectCard({ project, onBuy }) {
   return (
     <div className="project-card">
       <div className="project-image-wrap">
-        {/* Skeleton Loader */}
-        {!loaded && <div className="image-skeleton" />}
+
+        {!loaded && (
+          <>
+            <div className="image-skeleton" />
+            <div className="image-spinner"></div>
+          </>
+        )}
 
         <img
           src={imagePath}
