@@ -1,0 +1,65 @@
+/* =========================
+   ANALOG CLOCK (WHITE STYLE)
+========================= */
+
+.clock {
+  width: 80px;
+  height: 80px;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* center dot */
+.center-dot {
+  width: 8px;
+  height: 8px;
+  background: #111827;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10;
+}
+
+/* hands */
+.hand {
+  position: absolute;
+  bottom: 50%;
+  transform-origin: bottom;
+  border-radius: 6px;
+}
+
+/* hour hand */
+.hand.hour {
+  width: 4px;
+  height: 20px;
+  background: #111827;
+}
+
+/* minute hand */
+.hand.minute {
+  width: 3px;
+  height: 26px;
+  background: #374151;
+}
+
+/* second hand */
+.hand.second {
+  width: 2px;
+  height: 30px;
+  background: #ef4444;
+}
+
+/* OPTIONAL: subtle tick marks feel */
+.clock::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}

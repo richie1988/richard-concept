@@ -1,5 +1,6 @@
 import logo from "../assets/conceptlogo.png";
 import "../styles/footer.css";
+import AnalogClock from "./AnalogClock";
 
 function Footer() {
   return (
@@ -47,7 +48,10 @@ function Footer() {
       </div>
 
       <div className="container footer-bottom">
-        <p>© 2025 Richard Concept. All rights reserved.</p>
+         <AnalogClock />
+        <p>
+          © {new Date().getFullYear()} Richard Concept. All rights reserved.
+        </p>
       </div>
     </footer>
   );
