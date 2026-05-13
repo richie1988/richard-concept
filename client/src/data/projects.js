@@ -8,7 +8,7 @@ const projects = [
     full_description:
       "A professional corporate website for companies and brands. Includes responsive design, service pages, about page, contact page, SEO optimization, performance optimization, and deployment setup.",
     price: 1200,
-    image_url: "/images/projects/corporate-website.webp",
+    image_url: "/images/projects/optimized/corporate-website.webp",
     technologies: ["React", "CSS", "Node.js"],
     features: [
       "Responsive design",
@@ -30,7 +30,7 @@ const projects = [
     full_description:
       "A complete task management platform with dashboards, authentication, team collaboration, task assignment, progress tracking, and admin panel.",
     price: 3500,
-    image_url: "/images/projects/task-manager.webp",
+    image_url: "/images/projects/optimized/task-manager.webp",
     technologies: ["React", "Express", "PostgreSQL"],
     features: [
       "Dashboard",
@@ -52,7 +52,7 @@ const projects = [
     full_description:
       "A modern ecommerce mobile app with authentication, shopping cart, payment integration, product browsing, checkout flow, and backend APIs.",
     price: 7500,
-    image_url: "/images/projects/ecommerce-app.webp",
+    image_url: "/images/projects/optimized/ecommerce-app.webp",
     technologies: ["React Native", "API", "PostgreSQL"],
     features: [
       "Authentication",
@@ -74,7 +74,7 @@ const projects = [
     full_description:
       "A complete ecommerce platform with products, categories, checkout, payment integration, inventory management, and admin dashboard.",
     price: 5500,
-    image_url: "/images/projects/ecommerce-website.webp",
+    image_url: "/images/projects/optimized/ecommerce-website.webp",
     technologies: ["React", "Node.js", "PostgreSQL"],
     features: [
       "Products",
@@ -96,7 +96,7 @@ const projects = [
     full_description:
       "A complete ERP solution including inventory management, accounting, reporting, sales management, employee roles, and analytics dashboards.",
     price: 18000,
-    image_url: "/images/projects/erp-system.webp",
+    image_url: "/images/projects/optimized/erp-system.webp",
     technologies: ["React", "Express", "PostgreSQL"],
     features: [
       "Inventory",
@@ -119,7 +119,7 @@ const projects = [
     full_description:
       "A business CRM and HR system with employee records, attendance tracking, customer management, reporting dashboard, and analytics tools.",
     price: 12000,
-    image_url: "/images/projects/crm-hrpms.webp",
+    image_url: "/images/projects/optimized/crm-hrpms.webp",
     technologies: ["React", "Node.js", "PostgreSQL"],
     features: [
       "CRM",
