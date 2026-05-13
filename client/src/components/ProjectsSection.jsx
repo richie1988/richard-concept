@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import projectsData from "../data/projects";
 
 import ProjectCard from "./ProjectCard";
@@ -9,16 +9,6 @@ import { motion } from "framer-motion";
 
 function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // simulate smooth load (important for UX since no DB anymore)
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 600);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section className="projects-section" id="projects">
@@ -51,31 +41,29 @@ function ProjectsSection() {
           Explore my ready-to-use solutions. You can buy and deploy them for your business.
         </motion.p>
 
-        {/* LOADING STATE */}
-        {loading ? (
-          <div className="projects-loading">
-            <div className="spinner" />
-          </div>
-        ) : (
-          <div className="projects-grid">
-            {projectsData.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                <ProjectCard
-                  project={project}
-                  onBuy={() => setSelectedProject(project)}
-                />
-              </motion.div>
-            ))}
-          </div>
-        )}
+        {/* GRID (ALWAYS RENDERED) */}
+        <div className="projects-grid">
+          {projectsData.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.05
+              }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <ProjectCard
+                project={project}
+                onBuy={() => setSelectedProject(project)}
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
 
+      {/* MODAL */}
       {selectedProject && (
         <ProjectModal
           project={selectedProject}
