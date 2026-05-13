@@ -1,30 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import api from "../services/api";
+import projectsData from "../data/projects";
 import ProjectCard from "./ProjectCard";
 import ProjectModal from "./ProjectModal";
 import "../styles/projects.css";
 
 function ProjectsSection() {
-  const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await api.get("/projects");
-        setProjects(response.data);
-      } catch (error) {
-        console.error("Failed to load projects:", error);
-      }
-    };
-
-    fetchProjects();
-  }, []);
 
   return (
     <section className="projects-section" id="projects">
       <div className="container">
+
         <motion.p
           className="section-mini-title"
           initial={{ opacity: 0, y: 25 }}
@@ -51,7 +38,7 @@ function ProjectsSection() {
         </motion.p>
 
         <div className="projects-grid">
-          {projects.map((project, index) => (
+          {projectsData.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 25 }}
@@ -66,6 +53,7 @@ function ProjectsSection() {
             </motion.div>
           ))}
         </div>
+
       </div>
 
       {selectedProject && (
